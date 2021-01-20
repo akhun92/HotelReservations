@@ -22,10 +22,18 @@ app.intent ('Default Welcome Intent', (conv, params) => {
 
 });
 
-app.intent ('Reservas', (conv, params) => {
+app.intent ('Reservations Intent', (conv, params) => {
 
     conv.ask('Digame que tipo de reserva desea');
-    
+    conv.ask(new Suggestions('Habitaciones'));
+
+});
+
+app.intent ('Reservation Room', (conv, params) => {
+    conv.ask("Disponemos de habitaciones individuales, para 2 o para 4 Personas, digame que tipo de habitación quiere reservar");
+    conv.ask(new Suggestions('Habitación para dos'));
+    conv.ask(new Suggestions('Habitación para cuatro'));
+    conv.ask(new Suggestions('Habitación individual'));
 });
 
 exports.fulfillment = functions.https.onRequest(app);
