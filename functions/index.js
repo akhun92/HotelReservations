@@ -21,7 +21,7 @@ app.intent ('Default Welcome Intent', (conv, params) => {
         conv.ask(new Image ({
             url: 'https://www.tourinews.es/uploads/s1/47/03/71/nh-hotel-group-tambien-recurre-al-ico-para-garantizar-su-liquidez_4_732x400.jpeg',
             alt: 'Hotel',
-        }))
+        }));
         conv.ask(new Suggestions('Reservar habitación'));
         conv.ask(new Suggestions('Consultar precios'));
         conv.ask(new Suggestions('Consultar reserva'));
