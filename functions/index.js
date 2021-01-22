@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 
+//Declaración de objetos de dialogflow que vamos a utilizar
 const {
     dialogflow,
     Image,
@@ -11,9 +12,10 @@ const {
     List,
 } = require ('actions-on-google');
 
+//Instanciamos en la variable app la función dialogflow
 const app = dialogflow();
-const HOSTING = 'https://conversational-ai.eu/adria/hosting/img/';
 
+// Encontramos el primer intent del bot con una imagen y unas sugerencias
 app.intent ('Default Welcome Intent', (conv, params) => {
 
         conv.ask(`Bienvenido al asistente de NH hoteles, soy marta. ¿En que puedo ayudarle?`);
@@ -26,6 +28,7 @@ app.intent ('Default Welcome Intent', (conv, params) => {
         conv.ask(new Suggestions('Consultar reserva'));
 });
 
+// Damos sugerencias y un texto al intent de información
 app.intent ('Information', (conv, params) => {
   conv.ask("Digame sobre que quiere información");
   conv.ask(new Suggestions ('Habitaciones para 2'));
@@ -33,6 +36,8 @@ app.intent ('Information', (conv, params) => {
   conv.ask(new Suggestions ('Servicios'));
 });
 
+
+// Facilitamos información mediante una lista de los servicios y habitaciones que disponemos
 app.intent ('Information Services', (conv, params) => {
   conv.ask(new List({
     title: 'Servicios',
@@ -221,6 +226,8 @@ app.intent ('Information Room for 4', (conv, params) => {
   conv.ask(new Suggestions ('No necesito nada más'));
 });
 
+
+// Conjunto de intents para dar información al usuario de su reserva
 app.intent ('Reservation info', (conv, params) => {
   conv.ask("Digame el número de su reserva");
   conv.ask(new Suggestions('1000001'));
@@ -233,6 +240,8 @@ app.intent ('Reservation info with code', (conv, params) => {
   conv.ask(new Suggestions ('No necesito nada más'));
 });
 
+
+// Información sobre las tarifas mediante una tabla
 app.intent ('Prices', (conv, params) => {
   conv.ask("Aqui puede ver nuestras tarifas por día");
   conv.ask(new Table({
@@ -253,6 +262,7 @@ app.intent ('Prices', (conv, params) => {
 });
 
 
+// Conjunto de intents para realizar una reserva
 app.intent ('Reservation Room', (conv, params) => {
     conv.ask("Disponemos de habitaciones para 2 o para 4 Personas, digame que tipo de habitación quiere reservar");
     conv.ask(new Suggestions('Habitación para dos'));
@@ -512,6 +522,7 @@ app.intent ('Cancel reservation room', (conv, params) => {
   conv.ask(new Suggestions ('No necesito nada más'));
 });
 
+// Intents de despedida con dos posibles finales uno que el usuario se vaya sin finalizar y otro que el usuario se vaya finalizando su reserva.
 app.intent ('Bad Final', (conv, params) => {
   conv.ask("Lamento oir eso.");
   conv.ask("Vuelve cuando quieras y te ayudaré en lo que necesites.");
@@ -529,5 +540,17 @@ app.intent ('Happy Final', (conv, params) => {
   }));
 });
 
+// Si el bot no entiende al usuario se ejecutara esta funcion aconsejandole volver a empezar.
+app.intent ('Default Fallback Intent', (conv, params) => {
+  conv.ask("Disculpa no le he entendido.");
+  conv.ask("Quiza podria intentar a saludarme.");
+  conv.ask(new Image ({
+    url: 'https://www.museudebadalona.cat/wp-content/uploads/presentaci%C3%B3-web-800x321.jpg',
+    alt: 'Error',
+  }));
+  conv.ask(new Suggestions("Hola"))
+});
+
+// pasa a la función on request la función dialogflow() almacenandolo en la variable fulfillment, esto es lo primero que se ejecutara en nuestro bot
 exports.fulfillment = functions.https.onRequest(app);
 
