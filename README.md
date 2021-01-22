@@ -12,7 +12,7 @@ This Virtual Assistant consists of a Chatbot that provides the user with a compr
 
 - Adrià Soler Caballero <asolerc@campus.eug.es> | Student: Project and source code developing.
 
-- Prof. Ismael Chaile, Ph.D. | GDE: Project guiding-supervision. Base code and architecture. Cloud development infrastructure (aineth.com)
+- Prof. Ismael Chaile, Ph.D. | GDE: Project idea and guiding-supervision. Base code and architecture. Cloud development infrastructure (aineth.com)
 
 Subject: CONVERSATIONAL AI & MULTIMEDIA PROGRAMMING
 Institution: ESCUELAS UNIVERSITARIAS GUIMBERNAT, UAB.
