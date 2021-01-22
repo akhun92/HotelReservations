@@ -81,7 +81,7 @@ app.intent ('Information Services', (conv, params) => {
   }));
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 app.intent ('Information Room for 2', (conv, params) => {
@@ -128,7 +128,7 @@ app.intent ('Information Room for 2', (conv, params) => {
   }));
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 app.intent ('Information Room for 4', (conv, params) => {
@@ -175,7 +175,7 @@ app.intent ('Information Room for 4', (conv, params) => {
   }));
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 app.intent ('Information Room for 4', (conv, params) => {
@@ -222,7 +222,7 @@ app.intent ('Information Room for 4', (conv, params) => {
   }));
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 
@@ -243,13 +243,13 @@ app.intent ('Reservation info with code - yes', (conv, params) => {
   conv.ask("La reserva para 2 personas el día 9 de abril en una habitación confort con pensión completa ha sido cancelada.");
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 app.intent ('Reservation info with code - no', (conv, params) => {
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 // Información sobre las tarifas mediante una tabla
@@ -269,7 +269,7 @@ app.intent ('Prices', (conv, params) => {
   }));
   conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
-  conv.ask(new Suggestions ('No necesito nada más'));
+  conv.ask(new Suggestions ('Ya he acabado'));
 });
 
 
