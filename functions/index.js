@@ -7,7 +7,6 @@ const {
     Table,
     Carousel,
     Suggestions,
-    BrowseCarousel,
     LinkOutSuggestion,
     List,
 } = require ('actions-on-google');
