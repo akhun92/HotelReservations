@@ -227,7 +227,7 @@ app.intent ('Information Room for 4', (conv, params) => {
 });
 
 
-// Conjunto de intents para dar información al usuario de su reserva
+// Conjunto de intents para dar información al usuario de su reserva y permitirle cancelarla
 app.intent ('Reservation info', (conv, params) => {
   conv.ask("Digame el número de su reserva");
   conv.ask(new Suggestions('1000001'));
@@ -235,11 +235,23 @@ app.intent ('Reservation info', (conv, params) => {
 
 app.intent ('Reservation info with code', (conv, params) => {
   conv.ask("Dispone de una reserva para 2 personas el día 9 de abril en una habitación confort con pensión completa.");
-  conv.ask("¿Necesita algo más?");
+  conv.ask("¿Quiere cancelar su reserva?");
+  conv.ask(new Suggestions ('Si'));
+  conv.ask(new Suggestions ('No'));
+});
+
+app.intent ('Reservation info with code - yes', (conv, params) => {
+  conv.ask("La reserva para 2 personas el día 9 de abril en una habitación confort con pensión completa ha sido cancelada.");
+  conv.ask("¿Puedo ayudarle con algo más?");
   conv.ask(new Suggestions ('Realizar otra consulta'));
   conv.ask(new Suggestions ('No necesito nada más'));
 });
 
+app.intent ('Reservation info with code - no', (conv, params) => {
+  conv.ask("¿Puedo ayudarle con algo más?");
+  conv.ask(new Suggestions ('Realizar otra consulta'));
+  conv.ask(new Suggestions ('No necesito nada más'));
+});
 
 // Información sobre las tarifas mediante una tabla
 app.intent ('Prices', (conv, params) => {
